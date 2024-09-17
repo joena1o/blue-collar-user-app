@@ -98,8 +98,9 @@ class _HomePageState extends State<HomePage> {
               Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    border: Border.fromBorderSide(
-                        BorderSide(color: AppColors.borderGray, width: 1))),
+                    border: Border(
+                        top:
+                            BorderSide(color: AppColors.borderGray, width: 1))),
                 padding: const EdgeInsets.only(
                     top: 15, left: 22, right: 22, bottom: 20),
                 child: Row(

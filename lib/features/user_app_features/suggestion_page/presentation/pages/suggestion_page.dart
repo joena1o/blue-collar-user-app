@@ -34,7 +34,6 @@ class _SuggestionPageState extends State<SuggestionPage> {
                   Expanded(
                       child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
                         border: Border.all(color: AppColors.borderGray),
                         borderRadius: BorderRadius.circular(10)),
                     padding:
@@ -73,12 +72,11 @@ class _SuggestionPageState extends State<SuggestionPage> {
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.all(color: AppColors.borderGray),
-                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(15),
                       child: Icon(
                         UniconsLine.sliders_v_alt,
-                        color: AppColors.primaryColor,
+                        color: AppColors.tertiaryColor,
                       ),
                     ),
                   )

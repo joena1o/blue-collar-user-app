@@ -42,10 +42,14 @@ class _ArtisanAboutTabState extends State<ArtisanAboutTab> {
                       ),
                       Text(
                         "Hyefur Jonathan",
-                        style: UtilityClass.tertiaryRegular,
+                        style: UtilityClass.tertiarySmall,
                       ),
                       const SizedBox(height: 3),
-                      const Text("Software Development")
+                      Text(
+                        "Software Development",
+                        overflow: TextOverflow.ellipsis,
+                        style: UtilityClass.blackSmaller,
+                      )
                     ],
                   ),
                 ),
@@ -100,7 +104,8 @@ class _ArtisanAboutTabState extends State<ArtisanAboutTab> {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 margin: const EdgeInsets.only(right: 15, top: 10),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    // color: Colors.grey[200],
+                    border: Border.all(color: AppColors.borderGray),
                     borderRadius: BorderRadius.circular(10)),
                 child: const Text(
                   "Barbing",

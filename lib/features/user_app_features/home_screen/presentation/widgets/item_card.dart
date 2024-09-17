@@ -105,7 +105,8 @@ class ItemCard extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 margin: const EdgeInsets.only(left: 5),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    //color: Colors.grey[200],
+                    border: Border.all(color: AppColors.borderGray),
                     borderRadius: BorderRadius.circular(20)),
                 child: const Text(
                   "Barbing",

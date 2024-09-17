@@ -70,7 +70,6 @@ class _PasswordManagerPageState extends State<PasswordManagerPage> {
           ),
         ),
         bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
           child: Container(
             padding: UtilityClass.horizontalPadding,
             decoration: UtilityClass.buttonDecorationFill,

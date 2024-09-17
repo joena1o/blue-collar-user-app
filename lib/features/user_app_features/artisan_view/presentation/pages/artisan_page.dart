@@ -48,36 +48,39 @@ class _ArtisanPageState extends State<ArtisanPage> {
                         _controller.complete(controller);
                       },
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: kToolbarHeight),
-                      child: Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20.0),
-                              child: const CircleAvatar(
-                                  radius: 25,
-                                  foregroundColor: Colors.black,
-                                  backgroundColor: Colors.white,
-                                  child: Icon(UniconsLine.arrow_left)),
+                    SafeArea(
+                      bottom: false,
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 20),
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(left: 20.0),
+                                child: const CircleAvatar(
+                                    radius: 25,
+                                    foregroundColor: Colors.black,
+                                    backgroundColor: Colors.white,
+                                    child: Icon(UniconsLine.arrow_left)),
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(UniconsLine.bookmark, size: 25),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(UniconsLine.share_alt, size: 25),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                        ],
+                            const Spacer(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(UniconsLine.bookmark, size: 25),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(UniconsLine.share_alt, size: 25),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   ],
@@ -109,7 +112,6 @@ class _ArtisanPageState extends State<ArtisanPage> {
             ]),
           )),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
         child: Row(
           children: [
             Expanded(
@@ -144,14 +146,12 @@ class _ArtisanPageState extends State<ArtisanPage> {
     showModalBottomSheet<void>(
         context: context,
         showDragHandle: false,
-        backgroundColor: Colors.white,
         isScrollControlled: true,
         builder: (BuildContext context) {
           Size size = MediaQuery.of(context).size;
-          return Container(
+          return SizedBox(
             width: size.width,
             height: 400,
-            color: Colors.white,
             child: Column(
               children: [
                 const SizedBox(
@@ -221,16 +221,14 @@ class _ArtisanPageState extends State<ArtisanPage> {
     showModalBottomSheet<void>(
         context: context,
         showDragHandle: true,
-        backgroundColor: Colors.white,
         isScrollControlled: true,
         builder: (BuildContext context) {
           Size size = MediaQuery.of(context).size;
           return StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
-            return Container(
+            return SizedBox(
               width: size.width,
               height: 400,
-              color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -360,16 +358,14 @@ class _ArtisanPageState extends State<ArtisanPage> {
     showModalBottomSheet<void>(
         context: context,
         showDragHandle: true,
-        backgroundColor: Colors.white,
         isScrollControlled: true,
         builder: (BuildContext context) {
           Size size = MediaQuery.of(context).size;
           return StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
-            return Container(
+            return SizedBox(
               width: size.width,
               height: 460,
-              color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

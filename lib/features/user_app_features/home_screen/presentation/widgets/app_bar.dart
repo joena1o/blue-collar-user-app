@@ -104,7 +104,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                       Expanded(
                           child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            border: Border.all(color: AppColors.borderGray),
                             borderRadius: BorderRadius.circular(10)),
                         padding: const EdgeInsets.symmetric(
                             vertical: 3, horizontal: 15),
@@ -141,12 +141,11 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              border: Border.all(color: AppColors.borderGray),
                               borderRadius: BorderRadius.circular(10)),
                           padding: const EdgeInsets.all(15),
-                          child: Icon(
+                          child: const Icon(
                             UniconsLine.sliders_v_alt,
-                            color: AppColors.primaryColor,
                           ),
                         ),
                       )

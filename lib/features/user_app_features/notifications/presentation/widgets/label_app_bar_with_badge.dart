@@ -10,42 +10,45 @@ class LabelAppBarWithBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      margin: const EdgeInsets.only(top: kToolbarHeight),
-      decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: AppColors.borderGray)),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: AppColors.borderGray),
-                borderRadius: BorderRadius.circular(100)),
-            width: 40,
-            height: 40,
-            child: const Icon(UniconsLine.arrow_left),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 0.0),
-            child: Text(
-              title,
-              style: UtilityClass.blackRegular,
+    return SafeArea(
+      bottom: false,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        margin: const EdgeInsets.only(top: 20),
+        decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: AppColors.borderGray)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.borderGray),
+                  borderRadius: BorderRadius.circular(100)),
+              width: 40,
+              height: 40,
+              child: const Icon(UniconsLine.arrow_left),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: AppColors.tertiaryColor,
+            Padding(
+              padding: const EdgeInsets.only(right: 0.0),
+              child: Text(
+                title,
+                style: UtilityClass.blackRegular,
+              ),
             ),
-            child: const Text(
-              "2 New",
-              style: TextStyle(color: Colors.white),
-            ),
-          )
-        ],
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: AppColors.tertiaryColor,
+              ),
+              child: const Text(
+                "2 New",
+                style: TextStyle(color: Colors.white),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

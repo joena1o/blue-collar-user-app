@@ -11,35 +11,37 @@ class LabelAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      margin: const EdgeInsets.only(top: kToolbarHeight),
-      decoration: BoxDecoration(
-        border: border == false
-            ? null
-            : Border(bottom: BorderSide(color: AppColors.borderGray)),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: AppColors.borderGray),
-                borderRadius: BorderRadius.circular(100)),
-            width: 40,
-            height: 40,
-            child: const Icon(UniconsLine.arrow_left),
+    return SafeArea(
+        bottom: false,
+        child: Container(
+          padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+          margin: const EdgeInsets.only(top: 20),
+          decoration: BoxDecoration(
+            border: border == false
+                ? null
+                : Border(bottom: BorderSide(color: AppColors.borderGray)),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 45.0),
-            child: Text(
-              title,
-              style: UtilityClass.blackRegular,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.borderGray),
+                    borderRadius: BorderRadius.circular(100)),
+                width: 40,
+                height: 40,
+                child: const Icon(UniconsLine.arrow_left),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 45.0),
+                child: Text(
+                  title,
+                  style: UtilityClass.blackRegular,
+                ),
+              ),
+              Container()
+            ],
           ),
-          Container()
-        ],
-      ),
-    );
+        ));
   }
 }

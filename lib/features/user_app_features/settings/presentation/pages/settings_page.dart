@@ -30,7 +30,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   margin:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   decoration: BoxDecoration(
-                    color: Colors.white,
                     border:
                         Border(bottom: BorderSide(color: AppColors.borderGray)),
                   ),
@@ -52,7 +51,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     margin:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       border: Border(
                           bottom: BorderSide(color: AppColors.borderGray)),
                     ),
@@ -75,7 +73,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     margin:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       border: Border(
                           bottom: BorderSide(color: AppColors.borderGray)),
                     ),

@@ -56,7 +56,7 @@ class MapSampleState extends State<MapSample> {
                     Expanded(
                         child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          //color: Colors.white,
                           border: Border.all(color: AppColors.borderGray),
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(15),
@@ -84,7 +84,7 @@ class MapSampleState extends State<MapSample> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            //color: Colors.white,
                             border: Border.all(color: AppColors.borderGray),
                             borderRadius: BorderRadius.circular(10)),
                         padding: const EdgeInsets.all(15),

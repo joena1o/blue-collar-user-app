@@ -44,7 +44,6 @@ class _NotificationPageState extends State<NotificationPage> {
                             margin: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 0),
                             decoration: BoxDecoration(
-                              color: Colors.white,
                               border: Border(
                                   bottom:
                                       BorderSide(color: AppColors.borderGray)),

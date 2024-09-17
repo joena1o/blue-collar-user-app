@@ -28,7 +28,6 @@ class _ChatTabState extends State<ChatTab> {
                   Expanded(
                       child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
                         border: Border.all(color: AppColors.borderGray),
                         borderRadius: BorderRadius.circular(10)),
                     padding: const EdgeInsets.all(15),
@@ -58,7 +57,6 @@ class _ChatTabState extends State<ChatTab> {
                       margin: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 20),
                       decoration: BoxDecoration(
-                        color: Colors.white,
                         border: Border(
                             bottom: BorderSide(color: AppColors.borderGray)),
                       ),

@@ -34,25 +34,27 @@ class _OnboardingPageState extends State<OnboardingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Spacer(),
-            const Spacer(),
+            const Spacer(
+              flex: 2,
+            ),
             GradientText(
               'BlueCollar',
               style:
                   const TextStyle(fontSize: 40.0, fontWeight: FontWeight.w600),
               colors: [AppColors.primaryColor, AppColors.tertiaryColor],
             ),
-            Expanded(
-                flex: 5,
-                child: PageView(
-                  controller: pageController,
-                  onPageChanged: (index) {
-                    setState(() {
-                      currentPage = index;
-                    });
-                  },
-                  children: const [PageOne(), PageTwo(), PageThree()],
-                )),
+            SizedBox(
+              height: Responsive.getSize(context).height * .6,
+              child: PageView(
+                controller: pageController,
+                onPageChanged: (index) {
+                  setState(() {
+                    currentPage = index;
+                  });
+                },
+                children: const [PageOne(), PageTwo(), PageThree()],
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: PageViewDotIndicator(
@@ -67,7 +69,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             ),
             const SizedBox(
-              height: 70,
+              height: 50,
             ),
             Container(
                 decoration: BoxDecoration(
