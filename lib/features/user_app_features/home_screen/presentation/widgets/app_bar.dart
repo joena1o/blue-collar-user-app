@@ -104,14 +104,15 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                       Expanded(
                           child: Container(
                         decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.borderGray),
+                            border: Border.all(
+                                color: Theme.of(context).highlightColor),
                             borderRadius: BorderRadius.circular(10)),
                         padding: const EdgeInsets.symmetric(
                             vertical: 3, horizontal: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Icon(UniconsLine.search),
+                            const Icon(UniconsLine.search, color: Colors.white),
                             const SizedBox(
                               width: 10,
                             ),
@@ -141,12 +142,12 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.borderGray),
+                              border: Border.all(
+                                  color: Theme.of(context).highlightColor),
                               borderRadius: BorderRadius.circular(10)),
                           padding: const EdgeInsets.all(15),
-                          child: const Icon(
-                            UniconsLine.sliders_v_alt,
-                          ),
+                          child: const Icon(UniconsLine.sliders_v_alt,
+                              color: Colors.white),
                         ),
                       )
                     ],

@@ -57,13 +57,15 @@ class MapSampleState extends State<MapSample> {
                         child: Container(
                       decoration: BoxDecoration(
                           //color: Colors.white,
-                          border: Border.all(color: AppColors.borderGray),
+                          border: Border.all(
+                              color: Theme.of(context).highlightColor),
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(15),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Icon(UniconsLine.search),
+                          Icon(UniconsLine.search,
+                              color: AppColors.tertiaryColor),
                           const SizedBox(
                             width: 10,
                           ),
@@ -85,12 +87,13 @@ class MapSampleState extends State<MapSample> {
                       child: Container(
                         decoration: BoxDecoration(
                             //color: Colors.white,
-                            border: Border.all(color: AppColors.borderGray),
+                            border: Border.all(
+                                color: Theme.of(context).highlightColor),
                             borderRadius: BorderRadius.circular(10)),
                         padding: const EdgeInsets.all(15),
                         child: Icon(
                           UniconsLine.sliders_v_alt,
-                          color: AppColors.primaryColor,
+                          color: AppColors.tertiaryColor,
                         ),
                       ),
                     )

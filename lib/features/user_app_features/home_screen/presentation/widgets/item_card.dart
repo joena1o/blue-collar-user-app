@@ -13,7 +13,7 @@ class ItemCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 20),
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       decoration: BoxDecoration(
-          border: Border.all(color: AppColors.borderGray),
+          border: Border.all(color: Theme.of(context).highlightColor),
           borderRadius: BorderRadius.circular(10)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

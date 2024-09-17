@@ -63,8 +63,10 @@ class _LiveTrackingState extends State<LiveTracking> {
               Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    border: Border.fromBorderSide(
-                        BorderSide(color: AppColors.borderGray, width: 1))),
+                    border: Border(
+                        top: BorderSide(
+                            color: Theme.of(context).highlightColor,
+                            width: 1))),
                 padding: const EdgeInsets.only(
                     top: 15, left: 30, right: 30, bottom: 22),
                 child: Row(

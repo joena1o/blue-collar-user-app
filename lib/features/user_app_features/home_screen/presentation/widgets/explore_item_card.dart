@@ -1,5 +1,6 @@
 import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/utils/responsive.dart';
+import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
 
@@ -16,26 +17,27 @@ class ExploreItemCard extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (context, int i) {
             return Container(
-              width: Responsive.getSize(context).width * .83,
+              width: Responsive.getSize(context).width * .85,
               height: Responsive.getSize(context).height * .22,
               margin: const EdgeInsets.only(left: 20),
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: AppColors.borderGray),
+                border: Border.all(color: Theme.of(context).highlightColor),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Row(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: 24,
                         child: Text("A"),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Expanded(
@@ -44,17 +46,16 @@ class ExploreItemCard extends StatelessWidget {
                           children: [
                             Text(
                               "Software Developer",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
+                              style: UtilityClass.blackSmaller,
                             ),
-                            Text("Hyefur Jonathan"),
-                            SizedBox(
+                            const Text("Hyefur Jonathan"),
+                            const SizedBox(
                               height: 15,
                             ),
                           ],
                         ),
                       ),
-                      Row(
+                      const Row(
                         children: [
                           Icon(
                             UniconsLine.star,
@@ -119,7 +120,8 @@ class ExploreItemCard extends StatelessWidget {
                             horizontal: 10, vertical: 5),
                         margin: const EdgeInsets.only(left: 5),
                         decoration: BoxDecoration(
-                            color: Colors.grey[200],
+                            //color: Colors.grey[200],
+                            border: Border.all(color: AppColors.borderGray),
                             borderRadius: BorderRadius.circular(20)),
                         child: const Text(
                           "Barbing",

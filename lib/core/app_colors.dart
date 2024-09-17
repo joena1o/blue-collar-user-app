@@ -7,6 +7,6 @@ class AppColors {
   static Color darkColor = const Color.fromARGB(255, 10, 10, 10);
   static Color tertiaryColor = const Color(0xff91B8FF);
   static Color blueLightColor = const Color(0xff20A7DB);
-  static Color borderGray = const Color(0xffD2D2D2);
+  static Color borderGray = const Color(0x66BCBCBC);
   static Color? inactiveColor = Colors.grey;
 }

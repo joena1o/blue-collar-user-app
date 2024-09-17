@@ -99,8 +99,9 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     border: Border(
-                        top:
-                            BorderSide(color: AppColors.borderGray, width: 1))),
+                        top: BorderSide(
+                            color: Theme.of(context).highlightColor,
+                            width: 1))),
                 padding: const EdgeInsets.only(
                     top: 15, left: 22, right: 22, bottom: 20),
                 child: Row(
@@ -124,6 +125,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             "Home",
                             style: TextStyle(
+                              fontSize: 13,
                               color: i == 0
                                   ? AppColors.tertiaryColor
                                   : AppColors.inactiveColor,
@@ -150,6 +152,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             "Explore",
                             style: TextStyle(
+                              fontSize: 13,
                               color: i == 1
                                   ? AppColors.tertiaryColor
                                   : AppColors.inactiveColor,
@@ -176,6 +179,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             "Bookmark",
                             style: TextStyle(
+                              fontSize: 13,
                               color: i == 2
                                   ? AppColors.tertiaryColor
                                   : AppColors.inactiveColor,
@@ -202,6 +206,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             "Chat",
                             style: TextStyle(
+                              fontSize: 13,
                               color: i == 3
                                   ? AppColors.tertiaryColor
                                   : AppColors.inactiveColor,
@@ -228,6 +233,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             "Profile",
                             style: TextStyle(
+                              fontSize: 13,
                               color: i == 4
                                   ? AppColors.tertiaryColor
                                   : AppColors.inactiveColor,

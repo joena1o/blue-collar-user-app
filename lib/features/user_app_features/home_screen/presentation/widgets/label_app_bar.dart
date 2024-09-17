@@ -19,14 +19,16 @@ class LabelAppBar extends StatelessWidget {
           decoration: BoxDecoration(
             border: border == false
                 ? null
-                : Border(bottom: BorderSide(color: AppColors.borderGray)),
+                : Border(
+                    bottom:
+                        BorderSide(color: Theme.of(context).highlightColor)),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.borderGray),
+                    border: Border.all(color: Theme.of(context).highlightColor),
                     borderRadius: BorderRadius.circular(100)),
                 width: 40,
                 height: 40,

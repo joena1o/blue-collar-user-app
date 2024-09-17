@@ -1,8 +1,10 @@
+import 'package:blue_collar_app/features/user_app_features/settings/bloc/theme_bloc.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
 import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/label_app_bar.dart';
 import 'package:blue_collar_app/core/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unicons/unicons.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,6 +16,14 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  bool isSwitched = false;
+
+  @override
+  void initState() {
+    isSwitched = BlocProvider.of<ThemeBloc>(context).state is ThemeDark;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +50,35 @@ class _SettingsPageState extends State<SettingsPage> {
                     trailing: Icon(
                       UniconsLine.angle_right_b,
                       size: 30,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  decoration: BoxDecoration(
+                    border:
+                        Border(bottom: BorderSide(color: AppColors.borderGray)),
+                  ),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.only(bottom: 10, left: 15),
+                    leading: const Icon(UniconsLine.brightness_half),
+                    title: const Text("Dark Mode"),
+                    trailing: Switch(
+                      value: isSwitched,
+                      onChanged: (value) {
+                        setState(() {
+                          isSwitched = value;
+                          BlocProvider.of<ThemeBloc>(context)
+                              .add(ToggleTheme(isDark: !isSwitched));
+                        });
+                      },
+                      activeColor:
+                          Colors.blue, // Color of the switch when it's ON
+                      inactiveThumbColor:
+                          Colors.grey, // Color of the thumb when it's OFF
+                      inactiveTrackColor: Theme.of(context)
+                          .scaffoldBackgroundColor, // Track color when OFF
                     ),
                   ),
                 ),
@@ -97,7 +136,6 @@ class _SettingsPageState extends State<SettingsPage> {
     showModalBottomSheet<void>(
         context: context,
         showDragHandle: true,
-        backgroundColor: Colors.white,
         isScrollControlled: true,
         builder: (BuildContext context) {
           Size size = MediaQuery.of(context).size;

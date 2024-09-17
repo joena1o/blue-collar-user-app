@@ -31,9 +31,9 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
                       padding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 0),
                       decoration: BoxDecoration(
-                        color: Colors.white,
                         border: Border(
-                            bottom: BorderSide(color: AppColors.borderGray)),
+                            bottom: BorderSide(
+                                color: Theme.of(context).highlightColor)),
                       ),
                       child: ListTile(
                         contentPadding: EdgeInsets.zero,
