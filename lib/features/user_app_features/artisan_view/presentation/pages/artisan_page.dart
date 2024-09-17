@@ -150,7 +150,7 @@ class _ArtisanPageState extends State<ArtisanPage> {
           Size size = MediaQuery.of(context).size;
           return Container(
             width: size.width,
-            height: 460,
+            height: 400,
             color: Colors.white,
             child: Column(
               children: [
@@ -171,29 +171,6 @@ class _ArtisanPageState extends State<ArtisanPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                    showProceedBottomSheet(context);
-                  },
-                  child: Container(
-                    margin: UtilityClass.horizontalPadding,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.borderGray),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const ListTile(
-                      leading: CircleAvatar(
-                        child: Icon(UniconsLine.home),
-                      ),
-                      title: Text("Home"),
-                      subtitle: Text('Kofare Industrial Layout, Jimeta'),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
                 Container(
                   margin: UtilityClass.horizontalPadding,
                   decoration: BoxDecoration(
@@ -204,8 +181,8 @@ class _ArtisanPageState extends State<ArtisanPage> {
                     leading: CircleAvatar(
                       child: Icon(UniconsLine.location_point),
                     ),
-                    title: Text("Your Location"),
-                    subtitle: Text('Use Current Location'),
+                    title: Text("Current Location"),
+                    subtitle: Text('Use Current your location'),
                   ),
                 ),
                 const SizedBox(
