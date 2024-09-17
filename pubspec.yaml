@@ -1,0 +1,70 @@
+name: blue_collar_app
+description: "Connecting artisans to potential employers"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.6
+  unicons: ^3.0.0
+  go_router: ^14.2.7
+  flutter_bloc: ^8.1.6
+  flexible_dropdown: ^1.0.5
+  get_it: ^7.7.0
+  google_sign_in: ^6.2.1
+  flutter_dotenv: 
+  timeline_tile: ^2.0.0
+  page_view_dot_indicator: ^2.3.0
+  casa_vertical_stepper: ^0.0.5
+  flutter_staggered_grid_view: ^0.7.0
+  lottie: ^3.1.2
+  flutter_datetime_picker_plus: ^2.2.0
+  simple_gradient_text: ^1.3.0
+  syncfusion_flutter_sliders: ^26.2.14
+  location_picker_flutter_map: ^2.1.0
+  flutter_svg: ^2.0.10+1
+  fluttertoast: ^8.2.2
+  flutter_otp_text_field: ^1.2.0
+  google_maps_flutter: ^2.9.0
+  cached_network_image: ^3.4.1
+  firebase_core: 
+  http:
+  image_picker: 
+  shared_preferences: ^2.3.2
+  equatable: ^2.0.5
+  intl: ^0.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+
+  assets:
+      - assets/
+      - assets/svg/
+      - assets/fonts/
+      - assets/png/
+      - assets/lottie/
+      - .env
+
+
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 300
+        - asset: assets/fonts/Montserrat-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
