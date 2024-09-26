@@ -1,13 +1,18 @@
-import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:unicons/unicons.dart';
 
 class LabelAppBar extends StatelessWidget {
-  const LabelAppBar({super.key, required this.title, this.border = true});
+  const LabelAppBar(
+      {super.key,
+      required this.title,
+      this.showBack = true,
+      this.border = true});
 
   final String title;
-  final border;
+  final bool border;
+  final bool showBack;
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +31,25 @@ class LabelAppBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Theme.of(context).highlightColor),
-                    borderRadius: BorderRadius.circular(100)),
-                width: 40,
-                height: 40,
-                child: const Icon(UniconsLine.arrow_left),
+              Visibility(
+                visible: showBack,
+                child: GestureDetector(
+                  onTap: () {
+                    context.pop();
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Theme.of(context).highlightColor),
+                        borderRadius: BorderRadius.circular(100)),
+                    width: 40,
+                    height: 40,
+                    child: const Icon(UniconsLine.arrow_left),
+                  ),
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 45.0),
+                padding: EdgeInsets.only(right: showBack ? 45.0 : 0.00),
                 child: Text(
                   title,
                   style: UtilityClass.blackRegular,

@@ -11,7 +11,6 @@ import 'package:blue_collar_app/features/user_app_features/person_information/pr
 import 'package:blue_collar_app/features/user_app_features/suggestion_page/presentation/pages/suggestion_page.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/presentation/pages/field_of_expertise.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/presentation/pages/login_page.dart';
-import 'package:blue_collar_app/features/user_app_features/user_auth/presentation/pages/sign_up_options.dart';
 import 'package:blue_collar_app/features/user_app_features/settings/presentation/pages/settings_page.dart';
 import 'package:blue_collar_app/features/user_app_features/settings/presentation/pages/password_manager_page.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/presentation/pages/sign_up_page.dart';
@@ -31,13 +30,11 @@ final GoRouter _router = GoRouter(
         path: '/onboarding',
         builder: (context, state) => const OnboardingPage()),
     GoRoute(path: '/login', builder: (context, state) => const LoginPage()),
-    GoRoute(
-        path: '/sign-up-option',
-        builder: (context, state) => const SignUpOptionPage()),
     GoRoute(path: '/sign-up', builder: (context, state) => const SignUpPage()),
     GoRoute(
         path: '/verify-email',
-        builder: (context, state) => const VerifyEmailAddress()),
+        builder: (context, state) =>
+            VerifyEmailAddress(email: state.extra as String)),
     GoRoute(
         path: '/verify-phone',
         builder: (context, state) => const VerifyPhone()),

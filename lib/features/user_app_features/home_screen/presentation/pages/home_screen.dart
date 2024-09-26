@@ -35,7 +35,10 @@ class _HomePageState extends State<HomePage> {
             children: [
               if (i == 0) const AppBarWidget(),
               if (i == 2) const LabelAppBar(title: "Bookmark"),
-              if (i == 3) const LabelAppBar(title: "Chat"),
+              if (i == 3)
+                const LabelAppBar(
+                  title: "Chat"
+                ),
               if (i == 4) const LabelAppBar(title: "Profile"),
 
               i == 0
@@ -44,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           children: [
                             const SizedBox(
-                              height: 25,
+                              height: 20,
                             ),
                             Padding(
                               padding: UtilityClass.horizontalPadding,
@@ -73,6 +76,9 @@ class _HomePageState extends State<HomePage> {
                               height: 10,
                             ),
                             const CategoryCarousel(),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             Column(
                               children: List.generate(10, (index) {
                                 return GestureDetector(
@@ -103,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                             color: Theme.of(context).highlightColor,
                             width: 1))),
                 padding: const EdgeInsets.only(
-                    top: 15, left: 22, right: 22, bottom: 20),
+                    top: 15, left: 22, right: 22, bottom: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

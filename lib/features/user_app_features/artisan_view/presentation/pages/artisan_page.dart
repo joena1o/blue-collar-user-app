@@ -61,7 +61,7 @@ class _ArtisanPageState extends State<ArtisanPage> {
                               child: Container(
                                 margin: const EdgeInsets.only(left: 20.0),
                                 child: const CircleAvatar(
-                                    radius: 25,
+                                    radius: 20,
                                     foregroundColor: Colors.black,
                                     backgroundColor: Colors.white,
                                     child: Icon(UniconsLine.arrow_left)),
@@ -70,11 +70,13 @@ class _ArtisanPageState extends State<ArtisanPage> {
                             const Spacer(),
                             IconButton(
                               onPressed: () {},
-                              icon: const Icon(UniconsLine.bookmark, size: 25),
+                              icon: const Icon(UniconsLine.bookmark,
+                                  color: Colors.black, size: 20),
                             ),
                             IconButton(
                               onPressed: () {},
-                              icon: const Icon(UniconsLine.share_alt, size: 25),
+                              icon: const Icon(UniconsLine.share_alt,
+                                  color: Colors.black, size: 20),
                             ),
                             const SizedBox(
                               width: 10,
@@ -112,6 +114,7 @@ class _ArtisanPageState extends State<ArtisanPage> {
             ]),
           )),
       bottomNavigationBar: BottomAppBar(
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: Row(
           children: [
             Expanded(
@@ -146,12 +149,13 @@ class _ArtisanPageState extends State<ArtisanPage> {
     showModalBottomSheet<void>(
         context: context,
         showDragHandle: false,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         isScrollControlled: true,
         builder: (BuildContext context) {
           Size size = MediaQuery.of(context).size;
           return SizedBox(
             width: size.width,
-            height: 400,
+            height: 350,
             child: Column(
               children: [
                 const SizedBox(
@@ -171,18 +175,23 @@ class _ArtisanPageState extends State<ArtisanPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                Container(
-                  margin: UtilityClass.horizontalPadding,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.borderGray),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(UniconsLine.location_point),
+                GestureDetector(
+                  onTap: () {
+                    showProceedBottomSheet(context);
+                  },
+                  child: Container(
+                    margin: UtilityClass.horizontalPadding,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.borderGray),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    title: Text("Current Location"),
-                    subtitle: Text('Use Current your location'),
+                    child: const ListTile(
+                      leading: CircleAvatar(
+                        child: Icon(UniconsLine.location_point),
+                      ),
+                      title: Text("Current Location"),
+                      subtitle: Text('Use Current your location'),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -221,6 +230,7 @@ class _ArtisanPageState extends State<ArtisanPage> {
     showModalBottomSheet<void>(
         context: context,
         showDragHandle: true,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         isScrollControlled: true,
         builder: (BuildContext context) {
           Size size = MediaQuery.of(context).size;
@@ -228,7 +238,7 @@ class _ArtisanPageState extends State<ArtisanPage> {
               builder: (BuildContext context, StateSetter setState) {
             return SizedBox(
               width: size.width,
-              height: 400,
+              height: 560,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -293,21 +303,40 @@ class _ArtisanPageState extends State<ArtisanPage> {
                     padding: UtilityClass.horizontalPadding,
                     child: Text(
                       "ETA: 30 MINS",
-                      style: UtilityClass.blackSmall,
+                      style: UtilityClass.blackSmaller,
                     ),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Padding(
                     padding: UtilityClass.horizontalPadding,
                     child: Text(
                       "Distance: 30 km",
-                      style: UtilityClass.blackSmall,
+                      style: UtilityClass.blackSmaller,
                     ),
                   ),
                   const Spacer(
                     flex: 2,
+                  ),
+                  Padding(
+                    padding: UtilityClass.horizontalPadding,
+                    child: const Text("Leave a note"),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: UtilityClass.horizontalPadding,
+                    child: TextFormField(
+                      maxLines: 3,
+                      decoration: const InputDecoration(
+                          hintText: "Drop a note (optional)",
+                          hintStyle: TextStyle(fontSize: 14)),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
                   ),
                   Padding(
                     padding: UtilityClass.horizontalPadding,
@@ -358,6 +387,7 @@ class _ArtisanPageState extends State<ArtisanPage> {
     showModalBottomSheet<void>(
         context: context,
         showDragHandle: true,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         isScrollControlled: true,
         builder: (BuildContext context) {
           Size size = MediaQuery.of(context).size;

@@ -25,7 +25,7 @@ class _LocationPickerPageState extends State<LocationPickerPage> {
             trackMyPosition: true,
             searchBarBackgroundColor: Colors.transparent,
             mapLanguage: 'en',
-            onError: (e) => print(e),
+            //onError: (e) => print(e),
             selectLocationButtonLeadingIcon: null,
             onPicked: (pickedData) {
               //print(pickedData.latLong.latitude);

@@ -1,4 +1,3 @@
-import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/label_app_bar.dart';
 import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
@@ -41,7 +40,7 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
                           radius: 30,
                           child: Text(""),
                         ),
-                        title: const Text("Carla Schoen"),
+                        title: const Text("Carla Elite"),
                         subtitle: const Padding(
                           padding: EdgeInsets.symmetric(vertical: 4.0),
                           child: Text("08149056513"),

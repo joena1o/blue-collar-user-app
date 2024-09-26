@@ -11,7 +11,7 @@ class CategoryCarousel extends StatelessWidget {
 
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 0),
       width: size.width,
       height: 50,
       child: ListView.builder(
@@ -23,7 +23,7 @@ class CategoryCarousel extends StatelessWidget {
                 child: ActionChip(
                     surfaceTintColor: AppColors.primaryColor,
                     onPressed: active == i ? () {} : null,
-                    disabledColor: Colors.transparent,
+                    disabledColor: Theme.of(context).scaffoldBackgroundColor,
                     backgroundColor: AppColors.primaryColor,
                     labelPadding: const EdgeInsets.symmetric(horizontal: 10),
                     label: Text(

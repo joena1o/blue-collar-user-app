@@ -59,7 +59,9 @@ class MainAppTheme {
   static ThemeData darkTheme = ThemeData(
       fontFamily: "Montserrat",
       //brightness: Brightness.dark, // Enable dark mode brightness
-      appBarTheme: const AppBarTheme(color: Colors.black),
+      appBarTheme: const AppBarTheme(
+        color: Color.fromARGB(255, 42, 42, 42),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),

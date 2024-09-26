@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "347404036368",
+    "project_id": "blue-collar-8954a",
+    "storage_bucket": "blue-collar-8954a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347404036368:android:54ac9752ec6c5c74115d95",
+        "android_client_info": {
+          "package_name": "com.bluecollarng.blue_collar_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDma9sFUV8UbJ_LdHh3Ueauqhe8aKJNgLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

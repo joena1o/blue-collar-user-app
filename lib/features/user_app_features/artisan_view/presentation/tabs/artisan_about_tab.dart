@@ -83,7 +83,24 @@ class _ArtisanAboutTabState extends State<ArtisanAboutTab> {
                 "Software Engineer specializing in Flutter/Dart, Nodejs and Typescript with a comprehensive background in web and backend technologies. Skilled in designing, developing, and deploying software for Android, iOS, Web, and other platforms. Adept at collaborating effectively with cross-functional teams to create high-quality, scalable products."),
           ),
           const SizedBox(
-            height: 15,
+            height: 10,
+          ),
+          Padding(
+            padding: UtilityClass.horizontalPadding,
+            child: Text(
+              "Price",
+              style: UtilityClass.tertiaryRegular,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: UtilityClass.horizontalPadding,
+            child: const Text("\$15.00 / hour"),
+          ),
+          const SizedBox(
+            height: 25,
           ),
           Padding(
             padding: UtilityClass.horizontalPadding,
@@ -104,7 +121,6 @@ class _ArtisanAboutTabState extends State<ArtisanAboutTab> {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 margin: const EdgeInsets.only(right: 15, top: 10),
                 decoration: BoxDecoration(
-                    // color: Colors.grey[200],
                     border: Border.all(color: AppColors.borderGray),
                     borderRadius: BorderRadius.circular(10)),
                 child: const Text(

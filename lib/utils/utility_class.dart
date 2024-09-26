@@ -36,9 +36,87 @@ class UtilityClass {
     "Sunday"
   ];
 
+  static String emailPattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+
   static List<String> workingModel = ["All", "Remote", "On-site"];
 
   static final tabHeader = ["Discover", "Search", "Favorites", "Profile"];
+
+
+  static String? passwordValidator(String? value) {
+    // Check if the password is empty
+    if (value == null || value.isEmpty) {
+      return 'Password cannot be empty';
+    }
+
+    // Check password length
+    if (value.length < 8) {
+      return 'Password must be at least 8 characters long';
+    }
+
+    // Check for uppercase letters
+    if (!RegExp(r'[A-Z]').hasMatch(value)) {
+      return 'Password must contain at least one uppercase letter';
+    }
+
+    // Check for lowercase letters
+    if (!RegExp(r'[a-z]').hasMatch(value)) {
+      return 'Password must contain at least one lowercase letter';
+    }
+
+    // Check for digits
+    if (!RegExp(r'[0-9]').hasMatch(value)) {
+      return 'Password must contain at least one digit';
+    }
+
+    // Check for special characters
+    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
+      return 'Password must contain at least one special character';
+    }
+
+    return null; // Password is valid
+  }
+
+
+  static String? firstNameValidator(String? value) {
+    // Check if the first name is empty
+    if (value == null || value.isEmpty) {
+      return 'First name cannot be empty';
+    }
+
+    // Check for valid length
+    if (value.length < 2) {
+      return 'First name must be at least 2 characters long';
+    }
+
+    // Check for invalid characters (optional)
+    if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
+      return 'First name can only contain letters';
+    }
+
+    return null; // First name is valid
+  }
+
+
+  static String? lastNameValidator(String? value) {
+    // Check if the last name is empty
+    if (value == null || value.isEmpty) {
+      return 'Last name cannot be empty';
+    }
+
+    // Check for valid length
+    if (value.length < 2) {
+      return 'Last name must be at least 2 characters long';
+    }
+
+    // Check for invalid characters (optional)
+    if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
+      return 'Last name can only contain letters';
+    }
+
+    return null; // Last name is valid
+  }
+
 
 //Button Container Styles
   static final buttonDecorationFill = BoxDecoration(

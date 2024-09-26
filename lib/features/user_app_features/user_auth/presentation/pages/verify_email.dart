@@ -1,16 +1,32 @@
+import 'dart:async';
+import 'package:blue_collar_app/core/app_colors.dart';
+import 'package:blue_collar_app/features/user_app_features/user_auth/bloc/auth_bloc.dart';
 import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:go_router/go_router.dart';
 
 class VerifyEmailAddress extends StatefulWidget {
-  const VerifyEmailAddress({super.key});
+  const VerifyEmailAddress({super.key, required this.email});
+  final String? email;
 
   @override
   State<VerifyEmailAddress> createState() => _VerifyEmailAddressState();
 }
 
 class _VerifyEmailAddressState extends State<VerifyEmailAddress> {
+  bool isLoading = true;
+  int timeLeft = 0;
+
+  @override
+  void initState() {
+    resetOtpTimer();
+    BlocProvider.of<AuthBloc>(context).add(SendEmailOtp(email: widget.email!));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +38,15 @@ class _VerifyEmailAddressState extends State<VerifyEmailAddress> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Spacer(),
+            const Spacer(
+              flex: 2,
+            ),
             const Image(
               image: AssetImage(
                 "assets/png/verify_email_img.png",
               ),
-              width: 200,
-              height: 200,
+              width: 150,
+              height: 150,
             ),
             const SizedBox(
               height: 40,
@@ -46,6 +64,46 @@ class _VerifyEmailAddressState extends State<VerifyEmailAddress> {
               textAlign: TextAlign.center,
               style: UtilityClass.blackRegular,
             ),
+            const SizedBox(
+              height: 40,
+            ),
+            BlocConsumer<AuthBloc, AuthState>(
+              listener: (context, state) {
+                if (state is EmailVerifiedState) {
+                  context.go("/verify-phone");
+                }
+              },
+              builder: (context, state) {
+                return Container(
+                  padding: UtilityClass.horizontalPadding,
+                  child: OtpTextField(
+                    showFieldAsBox: true,
+                    contentPadding:
+                        const EdgeInsets.symmetric(vertical: 23, horizontal: 0),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    numberOfFields: 4,
+                    borderColor: AppColors.primaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                    fieldWidth: 55,
+                    filled: true,
+                    fillColor: Colors.grey[100]!,
+                    fieldHeight: 55,
+                    onCodeChanged: (String code) {},
+                    onSubmit: (String verificationCode) {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: const Text("Verification Code"),
+                              content:
+                                  Text('Code entered is $verificationCode'),
+                            );
+                          });
+                    }, // end onSubmit
+                  ),
+                );
+              },
+            ),
             const Spacer(),
             Container(
               alignment: Alignment.center,
@@ -53,8 +111,7 @@ class _VerifyEmailAddressState extends State<VerifyEmailAddress> {
               width: Responsive.getSize(context).width,
               child: TextButton(
                 onPressed: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: Wrap(
                   children: [
                     Text(
                       "Didn't receive an email? ",
@@ -62,10 +119,16 @@ class _VerifyEmailAddressState extends State<VerifyEmailAddress> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        context.go('/verify-phone');
+                        if (timeLeft == 0) {
+                          BlocProvider.of<AuthBloc>(context)
+                              .add(SendEmailOtp(email: widget.email!));
+                          resetOtpTimer();
+                        }
                       },
                       child: Text(
-                        "Click Here",
+                        timeLeft != 0
+                            ? "Click here in ( $timeLeft ) secs"
+                            : "Click Here",
                         style: UtilityClass.tertiarySmall,
                       ),
                     )
@@ -77,5 +140,22 @@ class _VerifyEmailAddressState extends State<VerifyEmailAddress> {
         ),
       ),
     );
+  }
+
+  late Timer _timer;
+
+  resetOtpTimer() {
+    setState(() => timeLeft = 30);
+    setState(() => isLoading = true);
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (timeLeft > 0) {
+        setState(() => timeLeft--);
+      } else {
+        setState(() {
+          isLoading = false;
+          _timer.cancel();
+        });
+      }
+    });
   }
 }

@@ -1,6 +1,7 @@
 import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:unicons/unicons.dart';
 
 class LabelAppBarWithBadge extends StatelessWidget {
@@ -14,20 +15,25 @@ class LabelAppBarWithBadge extends StatelessWidget {
       bottom: false,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        margin: const EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 0),
         decoration: BoxDecoration(
           border: Border(bottom: BorderSide(color: AppColors.borderGray)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.borderGray),
-                  borderRadius: BorderRadius.circular(100)),
-              width: 40,
-              height: 40,
-              child: const Icon(UniconsLine.arrow_left),
+            GestureDetector(
+              onTap: () {
+                context.pop();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.borderGray),
+                    borderRadius: BorderRadius.circular(100)),
+                width: 40,
+                height: 40,
+                child: const Icon(UniconsLine.arrow_left),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 0.0),
