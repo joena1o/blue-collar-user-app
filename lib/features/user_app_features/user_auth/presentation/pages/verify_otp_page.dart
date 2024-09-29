@@ -1,20 +1,39 @@
 import 'package:blue_collar_app/core/app_colors.dart';
+import 'package:blue_collar_app/core/config/get_it_setup.dart';
+import 'package:blue_collar_app/utils/dialog_services.dart';
 import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:unicons/unicons.dart';
+import 'dart:async';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:blue_collar_app/features/user_app_features/user_auth/bloc/auth_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VerifyOtpPage extends StatefulWidget {
-  const VerifyOtpPage({super.key});
+  const VerifyOtpPage({super.key, required this.phone});
+
+  final String phone;
 
   @override
   State<VerifyOtpPage> createState() => _VerifyOtpPageState();
 }
 
 class _VerifyOtpPageState extends State<VerifyOtpPage> {
+  bool isLoading = true;
+  int timeLeft = 30;
+
+  TextEditingController pinCode = TextEditingController();
+  String? code;
+
+  @override
+  void initState() {
+    resetOtpTimer();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,23 +104,30 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                 filled: true,
                 fillColor: Colors.grey[100]!,
                 fieldHeight: 75,
-                onCodeChanged: (String code) {},
+                onCodeChanged: (String code) {
+                  setState(() {
+                    this.code = code;
+                  });
+                },
                 onSubmit: (String verificationCode) {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text("Verification Code"),
-                          content: Text('Code entered is $verificationCode'),
-                        );
-                      });
+                  if (pinCode.text.isEmpty) {
+                    getIt<DialogServices>()
+                        .showMessageError("Please enter your phone number");
+                    return;
+                  }
+                  if (pinCode.text.length >= 10 && pinCode.text.length <= 11) {
+                    BlocProvider.of<AuthBloc>(context)
+                        .add(VerifyOtpPhone(phone: pinCode.text, otp: code!));
+                  } else {
+                    getIt<DialogServices>()
+                        .showMessageError("Invalid phone number");
+                  }
                 }, // end onSubmit
               ),
             ),
             const Spacer(),
             Container(
               margin: UtilityClass.horizontalPadding,
-              //margin: const EdgeInsets.symmetric(vertical: 5),
               width: Responsive.getSize(context).width,
               decoration: UtilityClass.buttonDecorationFill,
               child: ElevatedButton(
@@ -111,10 +137,58 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                 child: const Text("Next"),
               ),
             ),
-            const SizedBox(height: 40)
+            const Spacer(),
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.only(bottom: 40),
+              width: Responsive.getSize(context).width,
+              child: TextButton(
+                onPressed: () {},
+                child: Wrap(
+                  children: [
+                    Text(
+                      "Didn't receive sms? ",
+                      style: UtilityClass.blackSmaller,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        if (timeLeft == 0) {
+                          BlocProvider.of<AuthBloc>(context)
+                              .add(SendPhoneOtp(phone: widget.phone));
+                          resetOtpTimer();
+                        }
+                      },
+                      child: Text(
+                        timeLeft != 0
+                            ? "Click here in ( $timeLeft ) secs"
+                            : "Click Here to resend",
+                        style: UtilityClass.tertiarySmall,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
+  }
+
+  late Timer _timer;
+
+  resetOtpTimer() {
+    setState(() => timeLeft = 30);
+    setState(() => isLoading = true);
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (timeLeft > 0) {
+        setState(() => timeLeft--);
+      } else {
+        setState(() {
+          isLoading = false;
+          _timer.cancel();
+        });
+      }
+    });
   }
 }

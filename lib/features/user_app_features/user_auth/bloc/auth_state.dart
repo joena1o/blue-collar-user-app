@@ -28,7 +28,17 @@ class OtpRequestSentState extends AuthState {
   final MessageResponse message;
 }
 
+class OtpRequestPhoneSentState extends AuthState {
+  const OtpRequestPhoneSentState({required this.otpRequestModel});
+  final OtpRequestModel otpRequestModel;
+}
+
 class EmailVerifiedState extends AuthState {
   const EmailVerifiedState({required this.message});
   final MessageResponse message;
+}
+
+class ProfileUpdatedState extends AuthState {
+  const ProfileUpdatedState({required this.user});
+  final UserModel user;
 }

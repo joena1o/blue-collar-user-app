@@ -8,9 +8,20 @@ class SharedPrefService {
     preferences.setString(key, value);
   }
 
+  static void saveBoolItem(String key, bool value) async {
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setBool(key, value);
+  }
+
   static Future<dynamic> getItem(String key) async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
     var result = preferences.getString(key);
+    return result;
+  }
+
+  static Future<dynamic> getBoolItem(String key) async {
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+    var result = preferences.getBool(key);
     return result;
   }
 

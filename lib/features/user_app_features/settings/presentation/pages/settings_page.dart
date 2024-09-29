@@ -1,3 +1,4 @@
+import 'package:blue_collar_app/data/local_storage.dart';
 import 'package:blue_collar_app/features/user_app_features/settings/bloc/theme_bloc.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +72,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           isSwitched = value;
                           BlocProvider.of<ThemeBloc>(context)
                               .add(ToggleTheme(isDark: !isSwitched));
+                          SharedPrefService.saveBoolItem("theme", value);
                         });
                       },
                       activeColor:
@@ -136,6 +138,7 @@ class _SettingsPageState extends State<SettingsPage> {
     showModalBottomSheet<void>(
         context: context,
         showDragHandle: true,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         isScrollControlled: true,
         builder: (BuildContext context) {
           Size size = MediaQuery.of(context).size;

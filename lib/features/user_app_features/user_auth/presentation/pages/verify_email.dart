@@ -20,6 +20,9 @@ class _VerifyEmailAddressState extends State<VerifyEmailAddress> {
   bool isLoading = true;
   int timeLeft = 0;
 
+  TextEditingController otpController = TextEditingController();
+  String? code;
+
   @override
   void initState() {
     resetOtpTimer();
@@ -74,34 +77,30 @@ class _VerifyEmailAddressState extends State<VerifyEmailAddress> {
                 }
               },
               builder: (context, state) {
-                return Container(
-                  padding: UtilityClass.horizontalPadding,
-                  child: OtpTextField(
-                    showFieldAsBox: true,
-                    contentPadding:
-                        const EdgeInsets.symmetric(vertical: 23, horizontal: 0),
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    numberOfFields: 4,
-                    borderColor: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(10),
-                    fieldWidth: 55,
-                    filled: true,
-                    fillColor: Colors.grey[100]!,
-                    fieldHeight: 55,
-                    onCodeChanged: (String code) {},
-                    onSubmit: (String verificationCode) {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text("Verification Code"),
-                              content:
-                                  Text('Code entered is $verificationCode'),
-                            );
+                return (state is AuthLoadingState)
+                    ? Container(
+                        alignment: Alignment.center,
+                        child: const CircularProgressIndicator())
+                    : OtpTextField(
+                        showFieldAsBox: true,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 0),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        numberOfFields: 6,
+                        borderColor: AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(10),
+                        fieldWidth: 45,
+                        fieldHeight: 50,
+                        onCodeChanged: (String code) {
+                          setState(() {
+                            this.code = code;
                           });
-                    }, // end onSubmit
-                  ),
-                );
+                        },
+                        onSubmit: (String verificationCode) {
+                          BlocProvider.of<AuthBloc>(context)
+                              .add(VerifyOtp(otp: code!, email: widget.email!));
+                        }, // end onSubmit
+                      );
               },
             ),
             const Spacer(),

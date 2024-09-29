@@ -40,7 +40,8 @@ final GoRouter _router = GoRouter(
         builder: (context, state) => const VerifyPhone()),
     GoRoute(
         path: '/verify-otp',
-        builder: (context, state) => const VerifyOtpPage()),
+        builder: (context, state) =>
+            VerifyOtpPage(phone: state.extra as String)),
     GoRoute(
         path: '/field-of-expertise',
         builder: (context, state) => const FieldOfExpertise()),

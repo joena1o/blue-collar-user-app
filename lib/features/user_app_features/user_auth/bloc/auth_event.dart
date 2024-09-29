@@ -13,6 +13,11 @@ class SignUpEventWithGoogle extends AuthEvent {
   const SignUpEventWithGoogle({required this.idToken});
 }
 
+class UpdateUserEvent extends AuthEvent {
+  final UserModel user;
+  const UpdateUserEvent({required this.user});
+}
+
 class SignUpEventManually extends AuthEvent {
   final String firstName;
   final String lastName;
@@ -41,6 +46,23 @@ class SendEmailOtp extends AuthEvent {
 }
 
 class VerifyOtp extends AuthEvent {
+  final String email;
   final String otp;
-  const VerifyOtp({required this.otp});
+  const VerifyOtp({required this.otp, required this.email});
+}
+
+class SendPhoneOtp extends AuthEvent {
+  final String phone;
+  const SendPhoneOtp({required this.phone});
+}
+
+class VerifyOtpPhone extends AuthEvent {
+  final String phone;
+  final String otp;
+  const VerifyOtpPhone({required this.otp, required this.phone});
+}
+
+class UpdateProfile extends AuthEvent {
+  final File image;
+  const UpdateProfile({required this.image});
 }

@@ -1,7 +1,7 @@
+import 'dart:io';
 import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/tabs/bookmark.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/tabs/chat_page.dart';
-import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/tabs/explore_page.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/tabs/profile_tab.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/app_bar.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/category_carousel.dart';
@@ -34,12 +34,9 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               if (i == 0) const AppBarWidget(),
-              if (i == 2) const LabelAppBar(title: "Bookmark"),
-              if (i == 3)
-                const LabelAppBar(
-                  title: "Chat"
-                ),
-              if (i == 4) const LabelAppBar(title: "Profile"),
+              if (i == 1) const LabelAppBar(title: "Bookmark"),
+              if (i == 2) const LabelAppBar(title: "Chat"),
+              if (i == 3) const LabelAppBar(title: "Profile"),
 
               i == 0
                   ? Expanded(
@@ -93,12 +90,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                     )
                   : i == 1
-                      ? const MapSample()
+                      ? const BookmarkPage()
                       : i == 2
-                          ? const BookmarkPage()
-                          : i == 3
-                              ? const ChatTab()
-                              : const ProfileTab(),
+                          ? const ChatTab()
+                          : const ProfileTab(),
 
               //Bottom AppBar
               Container(
@@ -108,8 +103,11 @@ class _HomePageState extends State<HomePage> {
                         top: BorderSide(
                             color: Theme.of(context).highlightColor,
                             width: 1))),
-                padding: const EdgeInsets.only(
-                    top: 15, left: 22, right: 22, bottom: 15),
+                padding: EdgeInsets.only(
+                    top: 15,
+                    left: 25,
+                    right: 25,
+                    bottom: Platform.isAndroid ? 15 : 25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -140,6 +138,33 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     setState(() => i = 1);
+                    //   },
+                    //   child: Column(
+                    //     children: [
+                    //       Icon(
+                    //         UniconsLine.globe,
+                    //         color: i == 1
+                    //             ? AppColors.tertiaryColor
+                    //             : AppColors.inactiveColor,
+                    //       ),
+                    //       const SizedBox(
+                    //         height: 5,
+                    //       ),
+                    //       Text(
+                    //         "Explore",
+                    //         style: TextStyle(
+                    //           fontSize: 13,
+                    //           color: i == 1
+                    //               ? AppColors.tertiaryColor
+                    //               : AppColors.inactiveColor,
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
                     GestureDetector(
                       onTap: () {
                         setState(() => i = 1);
@@ -147,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           Icon(
-                            UniconsLine.globe,
+                            UniconsLine.bookmark,
                             color: i == 1
                                 ? AppColors.tertiaryColor
                                 : AppColors.inactiveColor,
@@ -156,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                             height: 5,
                           ),
                           Text(
-                            "Explore",
+                            "Bookmark",
                             style: TextStyle(
                               fontSize: 13,
                               color: i == 1
@@ -174,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           Icon(
-                            UniconsLine.bookmark,
+                            UniconsLine.chat,
                             color: i == 2
                                 ? AppColors.tertiaryColor
                                 : AppColors.inactiveColor,
@@ -183,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                             height: 5,
                           ),
                           Text(
-                            "Bookmark",
+                            "Chat",
                             style: TextStyle(
                               fontSize: 13,
                               color: i == 2
@@ -201,35 +226,8 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           Icon(
-                            UniconsLine.chat,
-                            color: i == 3
-                                ? AppColors.tertiaryColor
-                                : AppColors.inactiveColor,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "Chat",
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: i == 3
-                                  ? AppColors.tertiaryColor
-                                  : AppColors.inactiveColor,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() => i = 4);
-                      },
-                      child: Column(
-                        children: [
-                          Icon(
                             UniconsLine.user,
-                            color: i == 4
+                            color: i == 3
                                 ? AppColors.tertiaryColor
                                 : AppColors.inactiveColor,
                           ),
@@ -240,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                             "Profile",
                             style: TextStyle(
                               fontSize: 13,
-                              color: i == 4
+                              color: i == 3
                                   ? AppColors.tertiaryColor
                                   : AppColors.inactiveColor,
                             ),

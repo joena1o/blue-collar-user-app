@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:blue_collar_app/core/config/get_it_setup.dart';
 import 'package:blue_collar_app/data/local_storage.dart';
+import 'package:blue_collar_app/features/user_app_features/user_auth/data/models/otp_request_model.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/data/models/user_model.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/data/repository/auth_repository.dart';
 import 'package:blue_collar_app/helper/exception_handler.dart';
@@ -25,6 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           "lastName": event.lastName,
           "email": event.email,
           "password": event.password,
+          "picture": event.picture,
           "referralCode": event.referralCode
         });
         emit(AuthLoadedState(user: user));
@@ -50,6 +53,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
 
+    on<UpdateUserEvent>((UpdateUserEvent event, Emitter<AuthState> emit) {
+      emit(AuthLoadedState(user: event.user));
+    });
+
     on<SendEmailOtp>((SendEmailOtp event, Emitter<AuthState> emit) async {
       emit(AuthLoadingState());
       try {
@@ -67,8 +74,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<VerifyOtp>((VerifyOtp event, Emitter<AuthState> emit) async {
       emit(AuthLoadingState());
       try {
-        MessageResponse response =
-            await authRepository.requestEmailOtp({"otp": event.otp});
+        MessageResponse response = await authRepository
+            .verifyEmailOtp({"otp": event.otp, "email": event.email});
+        emit(EmailVerifiedState(message: response));
+        getIt<DialogServices>().showMessage(response.message);
+      } catch (e) {
+        final message = handleExceptionWithMessage(e);
+        emit(AuthFailedState(errorMessage: message));
+        getIt<DialogServices>().showMessageError(message);
+      }
+    });
+
+    on<SendPhoneOtp>((SendPhoneOtp event, Emitter<AuthState> emit) async {
+      emit(AuthLoadingState());
+      try {
+        OtpRequestModel response =
+            await authRepository.requestPhoneOtp({"phone": event.phone});
+        emit(OtpRequestPhoneSentState(otpRequestModel: response));
+        getIt<DialogServices>().showMessage(response.message);
+      } catch (e) {
+        final message = handleExceptionWithMessage(e);
+        emit(AuthFailedState(errorMessage: message));
+        getIt<DialogServices>().showMessageError(message);
+      }
+    });
+
+    on<VerifyOtpPhone>((VerifyOtpPhone event, Emitter<AuthState> emit) async {
+      emit(AuthLoadingState());
+      try {
+        MessageResponse response = await authRepository
+            .verifyEmailOtp({"otp": event.otp, "phone": event.phone});
         emit(EmailVerifiedState(message: response));
         getIt<DialogServices>().showMessage(response.message);
       } catch (e) {
