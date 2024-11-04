@@ -1,5 +1,4 @@
 import 'package:blue_collar_app/features/user_app_features/artisan_view/presentation/pages/success_screen.dart';
-import 'package:blue_collar_app/features/user_app_features/create_profile/presentation/pages/create_profile_main.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/pages/filter_page.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/pages/home_screen.dart';
 import 'package:blue_collar_app/features/user_app_features/invite_friends/presentation/pages/invite_friends_page.dart';
@@ -9,7 +8,6 @@ import 'package:blue_collar_app/features/user_app_features/notifications/present
 import 'package:blue_collar_app/features/user_app_features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:blue_collar_app/features/user_app_features/person_information/presentation/pages/person_information_page.dart';
 import 'package:blue_collar_app/features/user_app_features/suggestion_page/presentation/pages/suggestion_page.dart';
-import 'package:blue_collar_app/features/user_app_features/user_auth/presentation/pages/field_of_expertise.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/presentation/pages/login_page.dart';
 import 'package:blue_collar_app/features/user_app_features/settings/presentation/pages/settings_page.dart';
 import 'package:blue_collar_app/features/user_app_features/settings/presentation/pages/password_manager_page.dart';
@@ -40,14 +38,15 @@ final GoRouter _router = GoRouter(
         builder: (context, state) => const VerifyPhone()),
     GoRoute(
         path: '/verify-otp',
-        builder: (context, state) =>
-            VerifyOtpPage(phone: state.extra as String)),
-    GoRoute(
-        path: '/field-of-expertise',
-        builder: (context, state) => const FieldOfExpertise()),
-    GoRoute(
-        path: '/create-profile',
-        builder: (context, state) => const CreateProfileMain()),
+        builder: (context, state) {
+          final arg = state.extra as Map<String, dynamic>?;
+          final pinId = arg?['pinId'];
+          final phone = arg?['phone'];
+          return VerifyOtpPage(
+            pinId: pinId,
+            phone: phone,
+          );
+        }),
     GoRoute(
         path: '/home',
         builder: (context, state) => const HomePage(),

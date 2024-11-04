@@ -1,7 +1,6 @@
 import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:location_picker_flutter_map/location_picker_flutter_map.dart';
 import 'package:flutter/material.dart';
-import 'package:unicons/unicons.dart';
 
 class LocationPickerPage extends StatefulWidget {
   const LocationPickerPage({super.key});
@@ -21,7 +20,7 @@ class _LocationPickerPageState extends State<LocationPickerPage> {
             initZoom: 11,
             minZoomLevel: 5,
             maxZoomLevel: 16,
-            markerIcon: const Icon(UniconsLine.location_arrow),
+            markerIcon: const Icon(Icons.location_on_outlined),
             trackMyPosition: true,
             searchBarBackgroundColor: Colors.transparent,
             mapLanguage: 'en',

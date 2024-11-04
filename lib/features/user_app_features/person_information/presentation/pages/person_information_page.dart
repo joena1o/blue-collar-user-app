@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:blue_collar_app/core/app_colors.dart';
-import 'package:blue_collar_app/data/data_provider.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/label_app_bar.dart';
 import 'package:blue_collar_app/features/user_app_features/person_information/bloc/personal_info_bloc.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/bloc/auth_bloc.dart';
@@ -9,7 +8,6 @@ import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:unicons/unicons.dart';
 
 class PersonalInformationPage extends StatefulWidget {
   const PersonalInformationPage({super.key});
@@ -21,8 +19,6 @@ class PersonalInformationPage extends StatefulWidget {
 
 class _PersonalInformationPageState extends State<PersonalInformationPage> {
   final ImagePicker picker = ImagePicker();
-
-  bool uploadingImage = false;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +62,7 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                                       )
                                     : const CircleAvatar(
                                         radius: 70,
-                                        child: Icon(UniconsLine.user),
+                                        child: Icon(Icons.person),
                                       ),
                                 Positioned(
                                     bottom: 10,
@@ -74,7 +70,7 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                                     child: CircleAvatar(
                                       backgroundColor: AppColors.primaryColor,
                                       child: const Icon(
-                                        UniconsLine.edit_alt,
+                                        Icons.edit,
                                         color: Colors.white,
                                       ),
                                     ))
@@ -193,21 +189,20 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                                 onTap: () async {
                                   final XFile? image = await picker.pickImage(
                                       source: ImageSource.camera);
-                                  await DataProvider.uploadImage(
-                                      File(image!.path));
+                                  callBack(
+                                      File(image!.path), authState.user.id);
                                 },
                                 child: Container(
                                   margin: UtilityClass.horizontalPadding,
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 10),
                                   decoration: BoxDecoration(
-                                    //border: Border.all(color: AppColors.borderGray),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: const ListTile(
                                     leading: CircleAvatar(
                                       child: Icon(
-                                        UniconsLine.camera,
+                                        Icons.camera,
                                         size: 20,
                                       ),
                                     ),
@@ -232,13 +227,12 @@ class _PersonalInformationPageState extends State<PersonalInformationPage> {
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 10),
                                   decoration: BoxDecoration(
-                                    //border: Border.all(color: AppColors.borderGray),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: const ListTile(
                                     leading: CircleAvatar(
                                       child: Icon(
-                                        UniconsLine.picture,
+                                        Icons.browse_gallery,
                                         size: 20,
                                       ),
                                     ),

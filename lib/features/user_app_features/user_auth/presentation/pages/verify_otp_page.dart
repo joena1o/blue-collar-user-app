@@ -5,17 +5,16 @@ import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:unicons/unicons.dart';
 import 'dart:async';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/bloc/auth_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VerifyOtpPage extends StatefulWidget {
-  const VerifyOtpPage({super.key, required this.phone});
+  const VerifyOtpPage({super.key, required this.phone, required this.pinId});
 
   final String phone;
+  final String pinId;
 
   @override
   State<VerifyOtpPage> createState() => _VerifyOtpPageState();
@@ -40,7 +39,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
       appBar: AppBar(
         title: Container(),
         leading: IconButton(
-          icon: const Icon(UniconsLine.angle_left_b,
+          icon: const Icon(Icons.keyboard_arrow_left,
               size: 34, color: Colors.black),
           onPressed: () {},
         ),
@@ -95,46 +94,27 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
               child: OtpTextField(
                 showFieldAsBox: true,
                 contentPadding:
-                    const EdgeInsets.symmetric(vertical: 23, horizontal: 15),
+                    const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 numberOfFields: 4,
                 borderColor: AppColors.primaryColor,
                 borderRadius: BorderRadius.circular(10),
-                fieldWidth: 75,
-                filled: true,
-                fillColor: Colors.grey[100]!,
-                fieldHeight: 75,
+                fieldWidth: 55,
+                fieldHeight: 65,
                 onCodeChanged: (String code) {
                   setState(() {
                     this.code = code;
                   });
                 },
                 onSubmit: (String verificationCode) {
-                  if (pinCode.text.isEmpty) {
+                  if (verificationCode.isEmpty) {
                     getIt<DialogServices>()
-                        .showMessageError("Please enter your phone number");
+                        .showMessageError("Please enter pin code");
                     return;
                   }
-                  if (pinCode.text.length >= 10 && pinCode.text.length <= 11) {
-                    BlocProvider.of<AuthBloc>(context)
-                        .add(VerifyOtpPhone(phone: pinCode.text, otp: code!));
-                  } else {
-                    getIt<DialogServices>()
-                        .showMessageError("Invalid phone number");
-                  }
+                  BlocProvider.of<AuthBloc>(context).add(VerifyOtpPhone(
+                      pinId: widget.pinId, pin: verificationCode));
                 }, // end onSubmit
-              ),
-            ),
-            const Spacer(),
-            Container(
-              margin: UtilityClass.horizontalPadding,
-              width: Responsive.getSize(context).width,
-              decoration: UtilityClass.buttonDecorationFill,
-              child: ElevatedButton(
-                onPressed: () {
-                  context.go("/field-of-expertise");
-                },
-                child: const Text("Next"),
               ),
             ),
             const Spacer(),

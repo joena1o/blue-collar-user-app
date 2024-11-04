@@ -4,7 +4,6 @@ import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:unicons/unicons.dart';
 
 class SuggestionPage extends StatefulWidget {
   const SuggestionPage({super.key});
@@ -41,7 +40,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Icon(UniconsLine.search),
+                        const Icon(Icons.search),
                         const SizedBox(
                           width: 10,
                         ),
@@ -75,7 +74,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(15),
                       child: Icon(
-                        UniconsLine.sliders_v_alt,
+                        Icons.tune,
                         color: AppColors.tertiaryColor,
                       ),
                     ),

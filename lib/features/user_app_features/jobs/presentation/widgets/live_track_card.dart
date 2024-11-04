@@ -3,7 +3,6 @@ import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-import 'package:unicons/unicons.dart';
 
 class LiveTrackCard extends StatelessWidget {
   const LiveTrackCard({super.key});
@@ -50,7 +49,7 @@ class LiveTrackCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(UniconsLine.clock),
+                  Icon(Icons.drive_eta),
                   SizedBox(
                     width: 10,
                   ),
@@ -62,7 +61,7 @@ class LiveTrackCard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(UniconsLine.location_arrow),
+                  Icon(Icons.keyboard_arrow_left),
                   SizedBox(
                     width: 10,
                   ),

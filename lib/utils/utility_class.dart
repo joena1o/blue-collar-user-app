@@ -36,12 +36,12 @@ class UtilityClass {
     "Sunday"
   ];
 
-  static String emailPattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+  static String emailPattern =
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
 
   static List<String> workingModel = ["All", "Remote", "On-site"];
 
   static final tabHeader = ["Discover", "Search", "Favorites", "Profile"];
-
 
   static String? passwordValidator(String? value) {
     // Check if the password is empty
@@ -77,7 +77,6 @@ class UtilityClass {
     return null; // Password is valid
   }
 
-
   static String? firstNameValidator(String? value) {
     // Check if the first name is empty
     if (value == null || value.isEmpty) {
@@ -97,7 +96,6 @@ class UtilityClass {
     return null; // First name is valid
   }
 
-
   static String? lastNameValidator(String? value) {
     // Check if the last name is empty
     if (value == null || value.isEmpty) {
@@ -116,7 +114,6 @@ class UtilityClass {
 
     return null; // Last name is valid
   }
-
 
 //Button Container Styles
   static final buttonDecorationFill = BoxDecoration(
@@ -168,6 +165,13 @@ class UtilityClass {
 
   static TextStyle blackLargeHeader = const TextStyle(
     fontSize: 30,
+    fontFamily: "Montserrat",
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle whiteLargeHeader = TextStyle(
+    fontSize: 24,
+    color: AppColors.lightColor,
     fontFamily: "Montserrat",
     fontWeight: FontWeight.w500,
   );

@@ -81,26 +81,24 @@ class _VerifyEmailAddressState extends State<VerifyEmailAddress> {
                     ? Container(
                         alignment: Alignment.center,
                         child: const CircularProgressIndicator())
-                    : OtpTextField(
-                        showFieldAsBox: true,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 0),
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        numberOfFields: 6,
-                        borderColor: AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(10),
-                        fieldWidth: 45,
-                        fieldHeight: 50,
-                        onCodeChanged: (String code) {
-                          setState(() {
-                            this.code = code;
-                          });
-                        },
-                        onSubmit: (String verificationCode) {
-                          BlocProvider.of<AuthBloc>(context)
-                              .add(VerifyOtp(otp: code!, email: widget.email!));
-                        }, // end onSubmit
-                      );
+                    : Padding(
+                        padding: UtilityClass.horizontalPadding,
+                        child: OtpTextField(
+                          showFieldAsBox: true,
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 0),
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          numberOfFields: 4,
+                          borderColor: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(10),
+                          fieldWidth: 45,
+                          fieldHeight: 50,
+                          onCodeChanged: (String code) {},
+                          onSubmit: (String verificationCode) {
+                            BlocProvider.of<AuthBloc>(context).add(VerifyOtp(
+                                otp: verificationCode, email: widget.email!));
+                          }, // end onSubmit
+                        ));
               },
             ),
             const Spacer(),

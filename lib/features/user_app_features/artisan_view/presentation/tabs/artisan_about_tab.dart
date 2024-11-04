@@ -1,7 +1,6 @@
 import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
-import 'package:unicons/unicons.dart';
 
 class ArtisanAboutTab extends StatefulWidget {
   const ArtisanAboutTab({super.key});
@@ -59,14 +58,14 @@ class _ArtisanAboutTabState extends State<ArtisanAboutTab> {
                     children: [
                       CircleAvatar(
                         backgroundColor: AppColors.borderGray,
-                        child: const Icon(UniconsLine.calling),
+                        child: const Icon(Icons.call),
                       ),
                       const SizedBox(
                         width: 10,
                       ),
                       CircleAvatar(
                         backgroundColor: AppColors.borderGray,
-                        child: const Icon(UniconsLine.comment_message),
+                        child: const Icon(Icons.comment),
                       )
                     ],
                   ),
@@ -154,12 +153,12 @@ class _ArtisanAboutTabState extends State<ArtisanAboutTab> {
                   borderRadius: BorderRadius.circular(10)),
               child: const ListTile(
                 leading: Icon(
-                  UniconsLine.file,
+                  Icons.file_copy_outlined,
                   size: 30,
                 ),
                 title: Text("Hyefur_jonathan.pdf"),
                 subtitle: Text("5 mb"),
-                trailing: Icon(UniconsLine.eye),
+                trailing: Icon(Icons.remove_red_eye_outlined),
               )),
           const SizedBox(
             height: 30,

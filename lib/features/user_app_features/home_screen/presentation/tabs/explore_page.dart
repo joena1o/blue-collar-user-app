@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:unicons/unicons.dart';
 
 class MapSample extends StatefulWidget {
   const MapSample({super.key});
@@ -64,8 +63,7 @@ class MapSampleState extends State<MapSample> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(UniconsLine.search,
-                              color: AppColors.tertiaryColor),
+                          Icon(Icons.search, color: AppColors.tertiaryColor),
                           const SizedBox(
                             width: 10,
                           ),
@@ -92,7 +90,7 @@ class MapSampleState extends State<MapSample> {
                             borderRadius: BorderRadius.circular(10)),
                         padding: const EdgeInsets.all(15),
                         child: Icon(
-                          UniconsLine.sliders_v_alt,
+                          Icons.tune,
                           color: AppColors.tertiaryColor,
                         ),
                       ),

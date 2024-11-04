@@ -5,7 +5,6 @@ import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:unicons/unicons.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});
@@ -45,7 +44,7 @@ class _ProfileTabState extends State<ProfileTab> {
                           ? CircleAvatar(
                               backgroundColor: AppColors.tertiaryColor,
                               radius: 55,
-                              child: const Icon(UniconsLine.user),
+                              child: const Icon(Icons.person),
                             )
                           : Container(
                               margin: UtilityClass.horizontalPadding,
@@ -86,10 +85,10 @@ class _ProfileTabState extends State<ProfileTab> {
                     ),
                     child: const ListTile(
                       contentPadding: EdgeInsets.only(bottom: 10, left: 15),
-                      leading: Icon(UniconsLine.setting),
+                      leading: Icon(Icons.settings),
                       title: Text("Settings"),
                       trailing: Icon(
-                        UniconsLine.angle_right_b,
+                        Icons.keyboard_arrow_left,
                         size: 30,
                       ),
                     ),
@@ -104,10 +103,10 @@ class _ProfileTabState extends State<ProfileTab> {
                   ),
                   child: const ListTile(
                     contentPadding: EdgeInsets.only(bottom: 10, left: 15),
-                    leading: Icon(UniconsLine.lock),
+                    leading: Icon(Icons.lock),
                     title: Text("Privacy Policy"),
                     trailing: Icon(
-                      UniconsLine.angle_right_b,
+                      Icons.keyboard_arrow_left,
                       size: 30,
                     ),
                   ),
@@ -125,10 +124,10 @@ class _ProfileTabState extends State<ProfileTab> {
                     ),
                     child: const ListTile(
                       contentPadding: EdgeInsets.only(bottom: 10, left: 15),
-                      leading: Icon(UniconsLine.user_plus),
+                      leading: Icon(Icons.person_add),
                       title: Text("Invite Friends"),
                       trailing: Icon(
-                        UniconsLine.angle_right_b,
+                        Icons.keyboard_arrow_left,
                         size: 30,
                       ),
                     ),
@@ -148,7 +147,7 @@ class _ProfileTabState extends State<ProfileTab> {
                     child: const ListTile(
                       contentPadding: EdgeInsets.only(bottom: 10, left: 15),
                       leading: Icon(
-                        UniconsLine.sign_out_alt,
+                        Icons.logout,
                         color: Colors.red,
                       ),
                       title: Text(
@@ -156,7 +155,7 @@ class _ProfileTabState extends State<ProfileTab> {
                         style: TextStyle(color: Colors.red),
                       ),
                       trailing: Icon(
-                        UniconsLine.angle_right_b,
+                        Icons.keyboard_arrow_left,
                         color: Colors.red,
                         size: 30,
                       ),

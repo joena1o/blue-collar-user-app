@@ -6,12 +6,11 @@ import 'package:blue_collar_app/features/user_app_features/home_screen/presentat
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/app_bar.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/category_carousel.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/item_card.dart';
-import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/label_app_bar.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/special_carousel.dart';
+import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/tab_app_bar_widget.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
-import 'package:unicons/unicons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,10 +32,37 @@ class _HomePageState extends State<HomePage> {
           height: size.height,
           child: Column(
             children: [
-              if (i == 0) const AppBarWidget(),
-              if (i == 1) const LabelAppBar(title: "Bookmark"),
-              if (i == 2) const LabelAppBar(title: "Chat"),
-              if (i == 3) const LabelAppBar(title: "Profile"),
+              if (i == 0)
+                Column(
+                  children: [
+                    const AppBarWidget(),
+                    Container(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 20, bottom: 15, top: 15),
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage(
+                                "assets/background/bottom_section.png")),
+                      ),
+                    ),
+                  ],
+                ),
+              if (i == 1)
+                TabAppBar(
+                  title: "Bookmark",
+                  callback: () {},
+                ),
+              if (i == 2)
+                TabAppBar(
+                  title: "Chat",
+                  callback: () {},
+                ),
+              if (i == 3)
+                TabAppBar(
+                  title: "Profile",
+                  callback: () {},
+                ),
 
               i == 0
                   ? Expanded(
@@ -118,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           Icon(
-                            UniconsLine.home,
+                            Icons.home,
                             color: i == 0
                                 ? AppColors.tertiaryColor
                                 : AppColors.inactiveColor,
@@ -172,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           Icon(
-                            UniconsLine.bookmark,
+                            Icons.bookmark,
                             color: i == 1
                                 ? AppColors.tertiaryColor
                                 : AppColors.inactiveColor,
@@ -199,7 +225,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           Icon(
-                            UniconsLine.chat,
+                            Icons.chat,
                             color: i == 2
                                 ? AppColors.tertiaryColor
                                 : AppColors.inactiveColor,
@@ -226,7 +252,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           Icon(
-                            UniconsLine.user,
+                            Icons.person,
                             color: i == 3
                                 ? AppColors.tertiaryColor
                                 : AppColors.inactiveColor,

@@ -1,7 +1,6 @@
 import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
-import 'package:unicons/unicons.dart';
 
 class ChatTab extends StatefulWidget {
   const ChatTab({super.key});
@@ -34,7 +33,7 @@ class _ChatTabState extends State<ChatTab> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Icon(UniconsLine.search),
+                        const Icon(Icons.search),
                         const SizedBox(
                           width: 10,
                         ),

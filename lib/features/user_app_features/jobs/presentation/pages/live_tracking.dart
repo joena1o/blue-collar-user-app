@@ -5,7 +5,6 @@ import 'package:blue_collar_app/features/user_app_features/jobs/presentation/wid
 import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:unicons/unicons.dart';
 
 class LiveTracking extends StatefulWidget {
   const LiveTracking({super.key});
@@ -76,8 +75,7 @@ class _LiveTrackingState extends State<LiveTracking> {
                       onTap: () {},
                       child: Column(
                         children: [
-                          Icon(UniconsLine.calling,
-                              color: AppColors.primaryColor),
+                          Icon(Icons.phone, color: AppColors.primaryColor),
                           const SizedBox(
                             height: 5,
                           ),
@@ -93,7 +91,7 @@ class _LiveTrackingState extends State<LiveTracking> {
                       child: Column(
                         children: [
                           Icon(
-                            UniconsLine.chat,
+                            Icons.chat,
                             color: AppColors.primaryColor,
                           ),
                           const SizedBox(
@@ -113,7 +111,7 @@ class _LiveTrackingState extends State<LiveTracking> {
                       child: Column(
                         children: [
                           Icon(
-                            UniconsLine.cancel,
+                            Icons.cancel,
                             color: AppColors.primaryColor,
                           ),
                           const SizedBox(
@@ -134,11 +132,11 @@ class _LiveTrackingState extends State<LiveTracking> {
                         children: [
                           !expanded
                               ? Icon(
-                                  UniconsLine.expand_alt,
+                                  Icons.tune,
                                   color: AppColors.primaryColor,
                                 )
                               : Icon(
-                                  UniconsLine.angle_down,
+                                  Icons.keyboard_arrow_down,
                                   color: AppColors.primaryColor,
                                 ),
                           const SizedBox(

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:unicons/unicons.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -44,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
         appBar: AppBar(
           title: Container(),
           leading: IconButton(
-            icon: const Icon(UniconsLine.angle_left_b,
+            icon: const Icon(Icons.keyboard_arrow_left,
                 size: 34, color: Colors.black),
             onPressed: () {
               Navigator.of(context).pop();
@@ -201,7 +200,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         obscureText: false,
                         decoration: const InputDecoration(
                             hintText: "Password (8 or more characters)",
-                            suffix: Icon(UniconsLine.eye_slash)),
+                            suffix: Icon(Icons.remove_red_eye)),
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
@@ -217,7 +216,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         obscureText: false,
                         decoration: const InputDecoration(
                             hintText: "Confirm password",
-                            suffix: Icon(UniconsLine.eye_slash)),
+                            suffix: Icon(Icons.remove_red_eye_outlined)),
                       ),
                       const SizedBox(height: 10),
                       TextFormField(

@@ -1,6 +1,5 @@
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
-import 'package:unicons/unicons.dart';
 
 class ArtisanReviewTab extends StatefulWidget {
   const ArtisanReviewTab({super.key});
@@ -26,7 +25,7 @@ class _ArtisanReviewTabState extends State<ArtisanReviewTab> {
                 style: UtilityClass.blackRegular,
               ),
               const Spacer(),
-              const Icon(UniconsLine.edit_alt),
+              const Icon(Icons.tune),
               const SizedBox(
                 width: 5,
               ),

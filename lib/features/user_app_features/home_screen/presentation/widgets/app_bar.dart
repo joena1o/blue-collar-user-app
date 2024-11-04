@@ -2,7 +2,6 @@ import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:unicons/unicons.dart';
 
 class AppBarWidget extends StatefulWidget {
   const AppBarWidget({super.key});
@@ -17,7 +16,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
     return Container(
         color: AppColors.primaryColor,
         margin: EdgeInsets.zero,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         child: SafeArea(
           bottom: false,
           child: Column(
@@ -41,7 +40,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Icon(
-                            UniconsLine.location_point,
+                            Icons.location_on,
                             size: 28,
                             color: AppColors.tertiaryColor,
                           ),
@@ -67,7 +66,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(10),
                       child: const Icon(
-                        UniconsLine.briefcase,
+                        Icons.work,
                         color: Colors.white,
                       ),
                     ),
@@ -85,7 +84,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(10),
                       child: const Icon(
-                        UniconsLine.bell,
+                        Icons.notifications,
                         color: Colors.white,
                       ),
                     ),
@@ -112,7 +111,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Icon(UniconsLine.search, color: Colors.white),
+                            const Icon(Icons.search, color: Colors.white),
                             const SizedBox(
                               width: 10,
                             ),
@@ -146,8 +145,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                                   color: Theme.of(context).highlightColor),
                               borderRadius: BorderRadius.circular(10)),
                           padding: const EdgeInsets.all(15),
-                          child: const Icon(UniconsLine.sliders_v_alt,
-                              color: Colors.white),
+                          child: const Icon(Icons.tune, color: Colors.white),
                         ),
                       )
                     ],

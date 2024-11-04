@@ -57,9 +57,9 @@ class SendPhoneOtp extends AuthEvent {
 }
 
 class VerifyOtpPhone extends AuthEvent {
-  final String phone;
-  final String otp;
-  const VerifyOtpPhone({required this.otp, required this.phone});
+  final String pinId;
+  final String pin;
+  const VerifyOtpPhone({required this.pin, required this.pinId});
 }
 
 class UpdateProfile extends AuthEvent {

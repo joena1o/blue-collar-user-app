@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-import 'package:unicons/unicons.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
     as picker;
 
@@ -64,18 +63,18 @@ class _ArtisanPageState extends State<ArtisanPage> {
                                     radius: 20,
                                     foregroundColor: Colors.black,
                                     backgroundColor: Colors.white,
-                                    child: Icon(UniconsLine.arrow_left)),
+                                    child: Icon(Icons.keyboard_arrow_left)),
                               ),
                             ),
                             const Spacer(),
                             IconButton(
                               onPressed: () {},
-                              icon: const Icon(UniconsLine.bookmark,
+                              icon: const Icon(Icons.bookmark,
                                   color: Colors.black, size: 20),
                             ),
                             IconButton(
                               onPressed: () {},
-                              icon: const Icon(UniconsLine.share_alt,
+                              icon: const Icon(Icons.share,
                                   color: Colors.black, size: 20),
                             ),
                             const SizedBox(
@@ -187,7 +186,7 @@ class _ArtisanPageState extends State<ArtisanPage> {
                     ),
                     child: const ListTile(
                       leading: CircleAvatar(
-                        child: Icon(UniconsLine.location_point),
+                        child: Icon(Icons.location_on),
                       ),
                       title: Text("Current Location"),
                       subtitle: Text('Use Current your location'),
@@ -210,7 +209,7 @@ class _ArtisanPageState extends State<ArtisanPage> {
                     ),
                     child: const ListTile(
                       leading: CircleAvatar(
-                        child: Icon(UniconsLine.location_arrow),
+                        child: Icon(Icons.location_on_outlined),
                       ),
                       title: Text("Pick Location"),
                       subtitle: Text('Pick service location from map'),

@@ -6,7 +6,6 @@ import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/features/user_app_features/home_screen/presentation/widgets/label_app_bar.dart';
 import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:unicons/unicons.dart';
 import 'package:go_router/go_router.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -46,10 +45,10 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   child: const ListTile(
                     contentPadding: EdgeInsets.only(bottom: 10, left: 15),
-                    leading: Icon(UniconsLine.bell),
+                    leading: Icon(Icons.notifications),
                     title: Text("Notification"),
                     trailing: Icon(
-                      UniconsLine.angle_right_b,
+                      Icons.keyboard_arrow_left,
                       size: 30,
                     ),
                   ),
@@ -63,7 +62,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   child: ListTile(
                     contentPadding: const EdgeInsets.only(bottom: 10, left: 15),
-                    leading: const Icon(UniconsLine.brightness_half),
+                    leading: const Icon(Icons.brightness_1),
                     title: const Text("Dark Mode"),
                     trailing: Switch(
                       value: isSwitched,
@@ -97,10 +96,10 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     child: const ListTile(
                       contentPadding: EdgeInsets.only(bottom: 10, left: 15),
-                      leading: Icon(UniconsLine.key_skeleton_alt),
+                      leading: Icon(Icons.key),
                       title: Text("Password Manager"),
                       trailing: Icon(
-                        UniconsLine.angle_right_b,
+                        Icons.keyboard_arrow_left,
                         size: 30,
                       ),
                     ),
@@ -119,11 +118,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     child: const ListTile(
                       contentPadding: EdgeInsets.only(bottom: 10, left: 15),
-                      leading: Icon(UniconsLine.trash, color: Colors.red),
+                      leading: Icon(Icons.delete, color: Colors.red),
                       title: Text("Delete Account",
                           style: TextStyle(color: Colors.red)),
                       trailing: Icon(
-                        UniconsLine.angle_right_b,
+                        Icons.keyboard_arrow_left,
                         color: Colors.red,
                         size: 30,
                       ),

@@ -3,6 +3,7 @@ import 'package:blue_collar_app/core/config/get_it_setup.dart';
 import 'package:blue_collar_app/data/local_storage.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/data/models/otp_request_model.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/data/models/user_model.dart';
+import 'package:blue_collar_app/features/user_app_features/user_auth/data/models/verified_response_model.dart';
 import 'package:blue_collar_app/features/user_app_features/user_auth/data/repository/auth_repository.dart';
 import 'package:blue_collar_app/helper/exception_handler.dart';
 import 'package:blue_collar_app/helper/success_handler.dart';
@@ -102,9 +103,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<VerifyOtpPhone>((VerifyOtpPhone event, Emitter<AuthState> emit) async {
       emit(AuthLoadingState());
       try {
-        MessageResponse response = await authRepository
-            .verifyEmailOtp({"otp": event.otp, "phone": event.phone});
-        emit(EmailVerifiedState(message: response));
+        VerifiedResponseModel response = await authRepository
+            .verifyPhoneOtp({"pin": event.pin, "pinId": event.pinId});
+        emit(OtpVerifiedState(verifiedResponseModel: response));
         getIt<DialogServices>().showMessage(response.message);
       } catch (e) {
         final message = handleExceptionWithMessage(e);

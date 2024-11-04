@@ -38,7 +38,7 @@ class EmailVerifiedState extends AuthState {
   final MessageResponse message;
 }
 
-class ProfileUpdatedState extends AuthState {
-  const ProfileUpdatedState({required this.user});
-  final UserModel user;
+class OtpVerifiedState extends AuthState {
+  const OtpVerifiedState({required this.verifiedResponseModel});
+  final VerifiedResponseModel verifiedResponseModel;
 }

@@ -2,7 +2,6 @@ import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
-import 'package:unicons/unicons.dart';
 
 class ExploreItemCard extends StatelessWidget {
   const ExploreItemCard({super.key});
@@ -58,7 +57,7 @@ class ExploreItemCard extends StatelessWidget {
                       const Row(
                         children: [
                           Icon(
-                            UniconsLine.star,
+                            Icons.star,
                             color: Colors.orange,
                           ),
                           SizedBox(
@@ -80,7 +79,7 @@ class ExploreItemCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Icon(
-                          UniconsLine.money_bill,
+                          Icons.money,
                           size: 20,
                           color: AppColors.tertiaryColor,
                         ),
@@ -97,7 +96,7 @@ class ExploreItemCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Icon(
-                          UniconsLine.location_point,
+                          Icons.local_activity,
                           size: 20,
                           color: AppColors.tertiaryColor,
                         ),

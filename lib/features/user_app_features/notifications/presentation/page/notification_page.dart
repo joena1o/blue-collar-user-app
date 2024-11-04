@@ -3,7 +3,6 @@ import 'package:blue_collar_app/features/user_app_features/notifications/present
 import 'package:blue_collar_app/utils/responsive.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
-import 'package:unicons/unicons.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -53,7 +52,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                 radius: 30,
                                 backgroundColor: AppColors.tertiaryColor,
                                 child: const Icon(
-                                  UniconsLine.chat,
+                                  Icons.chat,
                                   color: Colors.white,
                                 ),
                               ),

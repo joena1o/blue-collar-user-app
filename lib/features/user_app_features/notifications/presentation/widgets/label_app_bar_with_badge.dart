@@ -2,7 +2,6 @@ import 'package:blue_collar_app/core/app_colors.dart';
 import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:unicons/unicons.dart';
 
 class LabelAppBarWithBadge extends StatelessWidget {
   const LabelAppBarWithBadge({super.key, required this.title});
@@ -32,7 +31,7 @@ class LabelAppBarWithBadge extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100)),
                 width: 40,
                 height: 40,
-                child: const Icon(UniconsLine.arrow_left),
+                child: const Icon(Icons.keyboard_arrow_left),
               ),
             ),
             Padding(

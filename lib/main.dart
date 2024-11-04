@@ -19,7 +19,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   runApp(const MyApp());
 }
 
@@ -41,6 +40,9 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) =>
               AuthBloc(authRepository: getIt<AuthRepository>()),
         ),
+        BlocProvider<ThemeBloc>(
+          create: (BuildContext context) => ThemeBloc(),
+        ),
         BlocProvider<PersonalInfoBloc>(
           create: (BuildContext context) => PersonalInfoBloc(
               personalInfoRepository: getIt<PersonalInfoRepository>()),
@@ -48,15 +50,19 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
-          return MaterialApp.router(
-            routerConfig: router,
-            scaffoldMessengerKey: rootScaffoldMessengerKey,
-            debugShowCheckedModeBanner: false,
-            title: 'Blue Collar',
-            theme: (state is ThemeDark)
-                ? MainAppTheme.darkTheme
-                : MainAppTheme.lightTheme,
-          );
+          return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                  textScaler: const TextScaler.linear(
+                      1.0)), // Set to 1.0 to prevent scaling
+              child: MaterialApp.router(
+                routerConfig: router,
+                scaffoldMessengerKey: rootScaffoldMessengerKey,
+                debugShowCheckedModeBanner: false,
+                title: 'Blue Collar',
+                theme: (state is ThemeDark)
+                    ? MainAppTheme.darkTheme
+                    : MainAppTheme.lightTheme,
+              ));
         },
       ),
     );

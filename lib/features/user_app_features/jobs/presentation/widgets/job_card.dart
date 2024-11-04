@@ -4,7 +4,6 @@ import 'package:blue_collar_app/utils/utility_class.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-import 'package:unicons/unicons.dart';
 
 enum Status { ongoing, done, cancelled }
 
@@ -84,7 +83,7 @@ class JobCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(UniconsLine.tag),
+                  Icon(Icons.tag),
                   SizedBox(
                     width: 10,
                   ),
@@ -96,7 +95,7 @@ class JobCard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(UniconsLine.clock),
+                  Icon(Icons.drive_eta),
                   SizedBox(
                     width: 10,
                   ),
@@ -108,7 +107,7 @@ class JobCard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(UniconsLine.location_arrow),
+                  Icon(Icons.location_on),
                   SizedBox(
                     width: 10,
                   ),
